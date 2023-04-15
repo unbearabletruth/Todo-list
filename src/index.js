@@ -1,13 +1,10 @@
 import './style.css';
 
 const content = document.querySelector(".todos");
-const add = document.querySelector("button.add");
+const sidebar = document.querySelector(".sidebar");
+const addCard = document.querySelector("button.addCard");
+const addProject = document.querySelector("button.addProject");
 
-
-
-//class of todo inner logic
-//class of todo dom render
-//class of project
 class ToDoCard {
     constructor(title, description, dueDate, priority) {
         this.title = title;
@@ -20,7 +17,7 @@ class ToDoCard {
 class ToDoInterface {
    
     fillNewCard(){
-        add.addEventListener("click", () => {
+        addCard.addEventListener("click", () => {
             const form = document.createElement("form");
             
             const titlelabel = document.createElement("label");
@@ -57,10 +54,9 @@ class ToDoInterface {
             form.appendChild(submit);
             content.appendChild(form);
             submit.addEventListener("click", (e) => {
-                const firsttodo = new ToDoCard(titleinput.value, descriptioninput.value, dueDateinput.value, priorityinput.value);
-                const DefaultProject = new ProjectLogic();
-                DefaultProject.add(firsttodo);
-                this.renderNewCard(firsttodo);
+                const newToDo = new ToDoCard(titleinput.value, descriptioninput.value, dueDateinput.value, priorityinput.value);
+                DefaultProject.add(newToDo);
+                this.renderNewCard(newToDo);
                 form.remove();  
                 e.preventDefault();   
             });
@@ -89,8 +85,9 @@ class ToDoInterface {
 
 class ProjectLogic {
     
-    constructor(toDoList) {
+    constructor(name) {
         this.toDoList = [];
+        this.name = name;
     }
 
     add(card){
@@ -99,7 +96,35 @@ class ProjectLogic {
 }
 
 class ProjectInterface {
+
+    createNewProject(){
+        addProject.addEventListener("click", () => {
+            const form = document.createElement("form");
+            const titlelabel = document.createElement("label");
+            titlelabel.textContent = "Name";
+            const titleinput = document.createElement("input");
+            titleinput.type = "text";
+            const submit = document.createElement("button");
+            submit.innerText = "Add";
+            form.appendChild(titlelabel);
+            form.appendChild(titleinput);
+            form.appendChild(submit);
+            sidebar.appendChild(form);
+            submit.addEventListener("click", (e) => {
+                const newProjectL = new ProjectLogic(titleinput.value);
+                this.renderProject(newProjectL);
+                form.remove();  
+                e.preventDefault();   
+            });
+        })
+    }
     
+    renderProject(project){
+        const newproject = document.createElement("div");
+        newproject.classList.add("toDocard");
+        newproject.textContent = project.name;
+        sidebar.appendChild(newproject);
+    }
 }
 
 class ListofProjects {
@@ -113,5 +138,14 @@ class ListofProjects {
     }
 }
 
+const DefaultProject = new ProjectLogic("default");
+
+const newProject = new ProjectInterface;
+newProject.renderProject(DefaultProject);
 const hello =  new ToDoInterface;
 hello.fillNewCard();
+
+const projectOBj = new ProjectInterface;
+projectOBj.createNewProject();
+
+//make cards bound to selected project
