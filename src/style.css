@@ -19,9 +19,35 @@
 }
 
 .sidebar {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
     grid-row: 2 / 3;
     grid-column: 1;
     background-color: #f5f3ff;
+}
+
+.content {
+    position: relative;
+}
+
+button.addCard {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 170px;
+    height: 60px;
+    background-color: #a78bfa;
+    border-radius: 10px;
+    border: 0px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+}
+
+button.addCard:hover {
+    background-color: #c4b5fd;
 }
 
 .todos {
@@ -35,12 +61,24 @@
     display: flex;
     flex-direction: column;
     background-color: blanchedalmond;
-    height: 200px;
+    height: 300px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    justify-content: space-evenly;
 }
 
-form {
+form#cardForm {
     display: flex;
     flex-direction: column;
     background-color: blanchedalmond;
-    height: 200px;
+    height: 300px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    justify-content: space-evenly;
+}
+
+div.project:hover {
+    background-color: #a78bfa;
 }
