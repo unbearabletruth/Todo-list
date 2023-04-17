@@ -21,8 +21,7 @@
 .sidebar {
     display: flex;
     flex-direction: column;
-    padding: 15px;
-    gap: 15px;
+    gap: 5px;
     grid-row: 2 / 3;
     grid-column: 1;
     background-color: #f5f3ff;
@@ -79,6 +78,14 @@ form#cardForm {
     justify-content: space-evenly;
 }
 
-div.project:hover {
+div.project {
     background-color: #a78bfa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0px;
+}
+
+div.project:hover {
+    background-color: #c4b5fd;
 }
