@@ -3,7 +3,7 @@ import { ProjectLogic } from './classes';
 import { renderProject, createNewProject } from './projectDom';
 
 
-const DefaultProject = new ProjectLogic("default");
+const DefaultProject = new ProjectLogic("Daily Project");
 renderProject(DefaultProject);
 createNewProject();
 

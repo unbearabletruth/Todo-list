@@ -7,33 +7,35 @@ const content = document.querySelector(".todos");
 function formTitle(){
     const titleinput = document.createElement("input");
     titleinput.type = "text";
-    titleinput.placeholder = "Title"
+    titleinput.placeholder = "Title";
     return titleinput;
 }
 
 function formDescription(){
-    const descriptioninput = document.createElement("input");
-    descriptioninput.type = "text";
-    descriptioninput.placeholder = "Description"
+    const descriptioninput = document.createElement("textarea");
+    descriptioninput.placeholder = "Description";
+    descriptioninput.id = "descriptioninput";
     return descriptioninput;
 }
 
 function formDueDate(){
     const dueDateinput = document.createElement("input");
-    dueDateinput.type = "date";
+    dueDateinput.type = "datetime-local";
     dueDateinput.placeholder = "Due date";
+    dueDateinput.pattern = "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}";
     return dueDateinput;
 }
 
 function formPriority(){
     const priorityinput = document.createElement("input");
     priorityinput.type = "number";
-    priorityinput.placeholder = "priority";
+    priorityinput.placeholder = "Priority";
     return priorityinput;
 }
 
 function formSubmit(form, project, titleinput, descriptioninput, dueDateinput, priorityinput){
     const submit = document.createElement("button");
+    submit.classList.add("cardformbutton")
     submit.innerText = "Add";
     submit.addEventListener("click", (e) => {
         form.remove(); 
@@ -48,6 +50,7 @@ function formSubmit(form, project, titleinput, descriptioninput, dueDateinput, p
 
 function formCancel(form){
     const cancel = document.createElement("button");
+    cancel.classList.add("cardformbutton")
     cancel.innerText = "Cancel";
     cancel.addEventListener("click", (e) => {
         e.preventDefault();  
@@ -64,14 +67,17 @@ function fillNewCard(project){
         const descriptioninput = formDescription();
         const dueDateinput = formDueDate();
         const priorityinput = formPriority(); 
+        const buttons = document.createElement("div");
+        buttons.classList.add("cardformbutton")
         const submit = formSubmit(form, project, titleinput, descriptioninput, dueDateinput, priorityinput);
         const cancel = formCancel(form);
         form.appendChild(titleinput);
         form.appendChild(descriptioninput);    
         form.appendChild(dueDateinput);
         form.appendChild(priorityinput);
-        form.appendChild(submit);
-        form.appendChild(cancel);
+        buttons.appendChild(submit);
+        buttons.appendChild(cancel);
+        form.appendChild(buttons);
         content.appendChild(form); 
     })
 }
@@ -79,14 +85,14 @@ function fillNewCard(project){
 function renderNewCard(card){
     const toDo = document.createElement("div");
     toDo.classList.add("toDocard");
-    const title1 = document.createElement("div");
-    title1.textContent = `${card.title}`;
-    const description1 = document.createElement("div");
-    description1.textContent = `${card.description}`;
-    const dueDate1 = document.createElement("div");
-    dueDate1.textContent = `${card.dueDate}`;
-    const priority1 = document.createElement("div");
-    priority1.textContent = `${card.priority}`;
+    const title1 = document.createElement("p");
+    title1.textContent = `Task: ${card.title}`;
+    const description1 = document.createElement("p");
+    description1.textContent = `Description: ${card.description}`;
+    const dueDate1 = document.createElement("p");
+    dueDate1.textContent = `Due: ${card.dueDate}`;
+    const priority1 = document.createElement("p");
+    priority1.textContent = `Priority: ${card.priority}`;
     toDo.appendChild(title1);
     toDo.appendChild(description1);
     toDo.appendChild(dueDate1);

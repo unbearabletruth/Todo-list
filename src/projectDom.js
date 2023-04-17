@@ -3,11 +3,12 @@ import { ListofProjects } from './classes';
 import { ProjectLogic } from './classes';
 
 const addProject = document.querySelector("button.addProject");
-const sidebar = document.querySelector(".sidebar");
+const sidebar = document.querySelector(".projects");
 const content = document.querySelector(".todos");
 
 function projectFormName(){
     const nameinput = document.createElement("input");
+    nameinput.id = "projectinput"
     nameinput.type = "text";
     nameinput.placeholder = "Project name";
     return nameinput;
