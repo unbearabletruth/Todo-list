@@ -6,26 +6,34 @@ const addProject = document.querySelector("button.addProject");
 const sidebar = document.querySelector(".sidebar");
 const content = document.querySelector(".todos");
 
+function projectFormName(){
+    const nameinput = document.createElement("input");
+    nameinput.type = "text";
+    nameinput.placeholder = "Project name";
+    return nameinput;
+}
+
+function projectFromSubmit(formProject, nameinput){
+    const submit = document.createElement("button");
+    submit.innerText = "Add";
+    submit.addEventListener("click", (e) => {
+        const newProjectL = new ProjectLogic(nameinput.value);
+        renderProject(newProjectL);
+        formProject.remove();  
+        e.preventDefault();   
+    });
+    return submit;
+}
+
 function createNewProject(){
     addProject.addEventListener("click", () => {
         const formProject = document.createElement("form");
         formProject.id = "projectForm";
-        const titlelabel = document.createElement("label");
-        titlelabel.textContent = "Name";
-        const titleinput = document.createElement("input");
-        titleinput.type = "text";
-        const submit = document.createElement("button");
-        submit.innerText = "Add";
-        formProject.appendChild(titlelabel);
-        formProject.appendChild(titleinput);
+        const nameinput = projectFormName();
+        const submit = projectFromSubmit(formProject, nameinput);
+        formProject.appendChild(nameinput);
         formProject.appendChild(submit);
-        sidebar.appendChild(formProject);
-        submit.addEventListener("click", (e) => {
-            const newProjectL = new ProjectLogic(titleinput.value);
-            renderProject(newProjectL);
-            formProject.remove();  
-            e.preventDefault();   
-        });
+        sidebar.appendChild(formProject);   
     })
 }
     
