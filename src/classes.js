@@ -1,11 +1,12 @@
 import { renderNewCard } from "./cardDom";
 
 class ToDoCard {
-    constructor(title, description, dueDate, priority) {
+    constructor(title, description, dueDate, priority, uniqueID) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
+        this.uniqueID = uniqueID;
     }
 }
 
@@ -23,7 +24,7 @@ class ProjectLogic {
 
     remove(card){
         console.log(card)
-        this.toDoList = this.toDoList.filter(item => item.title !== card.title);
+        this.toDoList = this.toDoList.filter(item => item.uniqueID !== card.uniqueID);
         console.log(this.toDoList);
     }
 

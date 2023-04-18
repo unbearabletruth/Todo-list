@@ -49,8 +49,9 @@ function formSubmit(form, titleinput, descriptioninput, dueDateinput, priorityin
     submit.classList.add("cardformbutton")
     submit.innerText = "Add";
     submit.addEventListener("click", (e) => {
-        form.remove(); 
-        const newToDo = new ToDoCard(titleinput.value, descriptioninput.value, dueDateinput.value, priorityinput.value);
+        form.remove();
+        const uniqueID = 'id' + (new Date()).getTime();
+        const newToDo = new ToDoCard(titleinput.value, descriptioninput.value, dueDateinput.value, priorityinput.value, uniqueID);
         console.log(CurrentProject);
         CurrentProject.add(newToDo);
         CurrentProject.showAllCards();
