@@ -14,8 +14,9 @@ function projectFormName(){
     return nameinput;
 }
 
-function projectFromSubmit(formProject, nameinput){
+function projectFormSubmit(formProject, nameinput){
     const submit = document.createElement("button");
+    submit.id = "projectsubmitbutton";
     submit.innerText = "Add";
     submit.addEventListener("click", (e) => {
         const newProjectL = new ProjectLogic(nameinput.value);
@@ -31,7 +32,7 @@ function createNewProject(){
         const formProject = document.createElement("form");
         formProject.id = "projectForm";
         const nameinput = projectFormName();
-        const submit = projectFromSubmit(formProject, nameinput);
+        const submit = projectFormSubmit(formProject, nameinput);
         formProject.appendChild(nameinput);
         formProject.appendChild(submit);
         sidebar.appendChild(formProject);   

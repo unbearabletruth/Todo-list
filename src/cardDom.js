@@ -27,9 +27,18 @@ function formDueDate(){
 }
 
 function formPriority(){
-    const priorityinput = document.createElement("input");
-    priorityinput.type = "number";
-    priorityinput.placeholder = "Priority";
+    const priorityinput = document.createElement("select");
+    const options = ["Low", "Medium", "High"];
+    const optionInfo = document.createElement("option");
+    optionInfo.value = "";
+    optionInfo.text = "Choose priority";
+    priorityinput.appendChild(optionInfo);
+    options.forEach(element => {
+        const option = document.createElement("option");
+        option.value = element;
+        option.text = element;
+        priorityinput.appendChild(option);
+    });
     return priorityinput;
 }
 
