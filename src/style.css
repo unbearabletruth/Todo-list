@@ -229,3 +229,8 @@ p.currentproject {
     color: #404040;
     font-weight: bold;
 }
+
+img {
+    width: 15px;
+    height: auto;
+}

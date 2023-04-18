@@ -1,5 +1,6 @@
-import { ToDoCard } from "./classes";
+import { ToDoCard, ProjectLogic } from "./classes";
 import { CurrentProject } from ".";
+import bin from "./bin.svg";
 
 
 const content = document.querySelector(".todos");
@@ -94,6 +95,16 @@ function fillNewCard(){
     })
 }
 
+function deleteBin(card, toDo){
+    const deleteIcon = document.createElement("img");
+    deleteIcon.src = bin;
+    deleteIcon.addEventListener("click", () => {
+        removeCard(card);
+        toDo.remove();
+    })
+    return deleteIcon;
+}
+
 function renderNewCard(card){
     const toDo = document.createElement("div");
     toDo.classList.add("toDocard");
@@ -105,11 +116,17 @@ function renderNewCard(card){
     dueDate1.textContent = `Due: ${card.dueDate}`;
     const priority1 = document.createElement("p");
     priority1.textContent = `Priority: ${card.priority}`;
+    const deleteIcon = deleteBin(card, toDo);
     toDo.appendChild(title1);
     toDo.appendChild(description1);
     toDo.appendChild(dueDate1);
     toDo.appendChild(priority1);
+    toDo.appendChild(deleteIcon);
     content.appendChild(toDo);
+}
+
+function removeCard(card){
+    CurrentProject.remove(card);
 }
 
 export {fillNewCard, renderNewCard}

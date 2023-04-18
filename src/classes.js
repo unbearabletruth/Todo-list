@@ -21,6 +21,12 @@ class ProjectLogic {
         this.toDoList.push(card);
     }
 
+    remove(card){
+        console.log(card)
+        this.toDoList = this.toDoList.filter(item => item.title !== card.title);
+        console.log(this.toDoList);
+    }
+
     showAllCards(){
         this.toDoList.forEach(card => {
             console.log(card);
