@@ -215,3 +215,9 @@ div.project:hover {
     color: #404040;
     opacity: 1; 
   }
+
+p.currentproject {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}

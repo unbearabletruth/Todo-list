@@ -5,7 +5,8 @@ import { CurrentProject } from '.';
 
 const addProject = document.querySelector("button.addProject");
 const sidebar = document.querySelector(".projects");
-const content = document.querySelector(".todos");
+const todos = document.querySelector(".todos");
+const content = document.querySelector(".content");
 
 function projectFormName(){
     const nameinput = document.createElement("input");
@@ -39,6 +40,14 @@ function createNewProject(){
         sidebar.appendChild(formProject);   
     })
 }
+
+function renderProjectName(project){
+    const whichProject = document.createElement("p");
+    whichProject.classList.add("currentproject")
+    whichProject.textContent = project.name;
+    content.appendChild(whichProject);
+    return whichProject;
+}
     
 function renderProject(project){
     const newproject = document.createElement("div");
@@ -46,9 +55,10 @@ function renderProject(project){
     newproject.textContent = project.name;
     sidebar.appendChild(newproject);
     newproject.addEventListener("click", () => {
-        while (content.firstChild) {
-            content.removeChild(content.firstChild);
+        while (todos.firstChild) {
+            todos.removeChild(todos.firstChild);
         }
+        renderProjectName(project);
         console.log(project)
         project.renderAllCards();
         const allprojects = new ListofProjects;
@@ -58,4 +68,4 @@ function renderProject(project){
 }
 
 fillNewCard();
-export {createNewProject, renderProject};
+export {createNewProject, renderProject, renderProjectName};
