@@ -18,24 +18,27 @@
     padding: 15px;
     grid-row: 1;
     grid-column: 1 / 3;
-    background-color: #14b8a6;
-    color: white;
+    background-color: #ede9fe;
+    color: #404040;
     font-size: 26px;
     font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    z-index: 1;
 }
 
-.sidebar {
+div.sidebar {
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 5px;
     grid-row: 2 / 3;
     grid-column: 1;
-    background-color: #e7e5e4;
+    background-color: #fafafa;
     padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 
-.sidebar.projects {
+.projects {
     padding-top: 50px;
 }
 
@@ -51,6 +54,7 @@ button.addProject {
     border: 0px;
     font-weight: bold;
     color: white;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 
 div.cardformbutton {
@@ -95,6 +99,7 @@ button.addCard {
     font-size: 22px;
     font-weight: bold;
     color: white;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 
 button#projectsubmitbutton {
@@ -205,6 +210,7 @@ div.project {
     font-size: 16px;
     font-weight: bold;
     border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 
 div.project:hover {
@@ -220,4 +226,6 @@ p.currentproject {
     position: absolute;
     left: 20px;
     top: 20px;
+    color: #404040;
+    font-weight: bold;
 }
