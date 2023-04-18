@@ -1,4 +1,5 @@
 import { ToDoCard } from "./classes";
+import { CurrentProject } from ".";
 
 const addCard = document.querySelector("button.addCard");
 const content = document.querySelector(".todos");
@@ -42,15 +43,16 @@ function formPriority(){
     return priorityinput;
 }
 
-function formSubmit(form, project, titleinput, descriptioninput, dueDateinput, priorityinput){
+function formSubmit(form, titleinput, descriptioninput, dueDateinput, priorityinput){
     const submit = document.createElement("button");
     submit.classList.add("cardformbutton")
     submit.innerText = "Add";
     submit.addEventListener("click", (e) => {
         form.remove(); 
         const newToDo = new ToDoCard(titleinput.value, descriptioninput.value, dueDateinput.value, priorityinput.value);
-        project.add(newToDo);
-        project.showAllCards();
+        console.log(CurrentProject);
+        CurrentProject.add(newToDo);
+        CurrentProject.showAllCards();
         renderNewCard(newToDo);
         e.preventDefault();   
     });
@@ -68,7 +70,7 @@ function formCancel(form){
     return cancel;
 }
 
-function fillNewCard(project){
+function fillNewCard(){
     addCard.addEventListener("click", () => {
         const form = document.createElement("form");
         form.id = "cardForm";
@@ -78,7 +80,7 @@ function fillNewCard(project){
         const priorityinput = formPriority(); 
         const buttons = document.createElement("div");
         buttons.classList.add("cardformbutton")
-        const submit = formSubmit(form, project, titleinput, descriptioninput, dueDateinput, priorityinput);
+        const submit = formSubmit(form, titleinput, descriptioninput, dueDateinput, priorityinput);
         const cancel = formCancel(form);
         form.appendChild(titleinput);
         form.appendChild(descriptioninput);    

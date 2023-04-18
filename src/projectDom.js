@@ -1,6 +1,7 @@
 import { fillNewCard } from './cardDom';
 import { ListofProjects } from './classes';
 import { ProjectLogic } from './classes';
+import { CurrentProject } from '.';
 
 const addProject = document.querySelector("button.addProject");
 const sidebar = document.querySelector(".projects");
@@ -52,8 +53,9 @@ function renderProject(project){
         project.renderAllCards();
         const allprojects = new ListofProjects;
         allprojects.add(project);
-        fillNewCard(project);
+        CurrentProject = project;
     });
 }
 
+fillNewCard();
 export {createNewProject, renderProject};
