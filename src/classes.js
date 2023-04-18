@@ -52,4 +52,6 @@ class ListofProjects {
     }
 }
 
-export {ToDoCard, ProjectLogic, ListofProjects};
+const allprojects = new ListofProjects;
+
+export {ToDoCard, ProjectLogic, ListofProjects, allprojects};

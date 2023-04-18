@@ -1,7 +1,7 @@
 import { ToDoCard } from "./classes";
 import { CurrentProject } from ".";
 
-const addCard = document.querySelector("button.addCard");
+
 const content = document.querySelector(".todos");
 
 
@@ -71,6 +71,7 @@ function formCancel(form){
 }
 
 function fillNewCard(){
+    const addCard = document.querySelector("button.addCard");
     addCard.addEventListener("click", () => {
         const form = document.createElement("form");
         form.id = "cardForm";
