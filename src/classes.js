@@ -28,8 +28,16 @@ class ProjectLogic {
         console.log(this.toDoList);
     }
 
-    edit(card){
-        //replace array item
+    edit(card, titleinput, descriptioninput, dueDateinput, priorityinput){
+        console.log(titleinput)
+        for (let task of this.toDoList){
+            if (card.uniqueID === task.uniqueID){
+                task.title = titleinput;
+                task.description = descriptioninput;
+                task.dueDate = dueDateinput;
+                task.priority = priorityinput;
+            }
+        }
     }
 
     showAllCards(){

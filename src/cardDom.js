@@ -80,6 +80,22 @@ function formForm(titleinput, descriptioninput, dueDateinput, priorityinput){
     return form;
 }
 
+function formFormEdit(card, titleinput, descriptioninput, dueDateinput, priorityinput, index){
+    const form = document.createElement("form");
+    form.id = "cardForm";
+    form.addEventListener("submit", (e) => {
+        form.remove();
+        const uniqueID = 'id' + (new Date()).getTime();
+        const newToDo = new ToDoCard(titleinput.value, descriptioninput.value, dueDateinput.value, priorityinput.value, uniqueID);
+        console.log(CurrentProject);
+        CurrentProject.edit(card, titleinput.value, descriptioninput.value, dueDateinput.value, priorityinput.value);
+        CurrentProject.showAllCards();
+        renderNewCard(newToDo, index);
+        e.preventDefault();   
+    });
+    return form;
+}
+
 function fillNewCard(){
     const addCard = document.querySelector("button.addCard");
     addCard.addEventListener("click", () => {
@@ -112,13 +128,17 @@ function deleteBin(card, toDo){
     })
     return deleteIcon;
 }
-
-function editCardIcon(card, toDo){
+//here we go
+function editCardIcon(card, toDo){  
     const editIcon = document.createElement("img");
     editIcon.src = edit;
     editIcon.addEventListener("click", () => {
+        console.log(card.uniqueID)
+        const child = document.getElementById(card.uniqueID);
+        const index = Array.from(child.parentElement.children).indexOf(child);
+        console.log(index);
         toDo.remove();
-        editCard(card, toDo);
+        editCard(card, index);
     })
     return editIcon;
 }
@@ -135,8 +155,9 @@ function priorityCardColor(toDo, priority){
     }
 }
 
-function renderNewCard(card){
+function renderNewCard(card, index){
     const toDo = document.createElement("div");
+    toDo.id = card.uniqueID;
     toDo.classList.add("toDocard");
     const title1 = document.createElement("p");
     title1.textContent = `Task: ${card.title}`;
@@ -146,22 +167,21 @@ function renderNewCard(card){
     dueDate1.textContent = `Due: ${card.dueDate}`;
     const priority1 = document.createElement("p");
     priority1.textContent = `Priority: ${card.priority}`;
-    const editIcon = editCardIcon(card, toDo);
     const deleteIcon = deleteBin(card, toDo);
     toDo.appendChild(title1);
     toDo.appendChild(description1);
     toDo.appendChild(dueDate1);
     toDo.appendChild(priority1);
     toDo.appendChild(deleteIcon);
-    toDo.appendChild(editIcon);
-    content.appendChild(toDo);
+    content.insertBefore(toDo, content.children[index]);
     priorityCardColor(toDo, card.priority);
+    const editIcon = editCardIcon(card, toDo);
+    toDo.appendChild(editIcon);
 }
 
-function editCard(card){
-    CurrentProject.remove(card);
+function editCard(card, index){
     const titleinput = formTitle();
-    console.log(card.title)
+    console.log(index)
     titleinput.value = card.title;
     const descriptioninput = formDescription();
     descriptioninput.value = card.description;
@@ -169,7 +189,7 @@ function editCard(card){
     dueDateinput.value = card.dueDate;
     const priorityinput = formPriority();
     priorityinput.value = card.priority;
-    const form = formForm(titleinput, descriptioninput, dueDateinput, priorityinput);
+    const form = formFormEdit(card, titleinput, descriptioninput, dueDateinput, priorityinput, index);
     const buttons = document.createElement("div");
     buttons.classList.add("cardformbutton");
     const submit = formSubmit();
@@ -181,7 +201,7 @@ function editCard(card){
     buttons.appendChild(submit);
     buttons.appendChild(cancel);
     form.appendChild(buttons);
-    content.appendChild(form); 
+    content.insertBefore(form, content.children[index]);
 }
 
 function removeCard(card){
@@ -189,3 +209,5 @@ function removeCard(card){
 }
 
 export {fillNewCard, renderNewCard}
+
+//get index of card and place at that index edited one
