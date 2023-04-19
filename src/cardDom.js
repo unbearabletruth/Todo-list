@@ -159,6 +159,7 @@ function renderNewCard(card){
 }
 
 function editCard(card){
+    CurrentProject.remove(card);
     const titleinput = formTitle();
     console.log(card.title)
     titleinput.value = card.title;
