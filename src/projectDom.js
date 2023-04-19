@@ -11,29 +11,35 @@ function projectFormName(){
     nameinput.id = "projectinput"
     nameinput.type = "text";
     nameinput.placeholder = "Project name";
+    nameinput.required = true;
     return nameinput;
 }
 
-function projectFormSubmit(formProject, nameinput){
+function projectFormSubmit(){
     const submit = document.createElement("button");
     submit.id = "projectsubmitbutton";
     submit.innerText = "Add";
-    submit.addEventListener("click", (e) => {
+    return submit;
+}
+
+function projectFormForm(nameinput){
+    const formProject = document.createElement("form");
+    formProject.id = "projectForm";
+    formProject.addEventListener("submit", (e) => {
         const newProjectL = new ProjectLogic(nameinput.value);
         renderProject(newProjectL);
         formProject.remove();  
         e.preventDefault();   
     });
-    return submit;
+    return formProject;
 }
 
 function createNewProject(){
     const addProject = document.querySelector("button.addProject");
     addProject.addEventListener("click", () => {
-        const formProject = document.createElement("form");
-        formProject.id = "projectForm";
         const nameinput = projectFormName();
-        const submit = projectFormSubmit(formProject, nameinput);
+        const submit = projectFormSubmit();
+        const formProject = projectFormForm(nameinput);
         formProject.appendChild(nameinput);
         formProject.appendChild(submit);
         sidebar.appendChild(formProject);   
