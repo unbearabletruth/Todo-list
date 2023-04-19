@@ -48,7 +48,7 @@ class ProjectLogic {
 
     renderAllCards(){
         this.toDoList.forEach(card => {
-            renderNewCard(card);
+            renderCard(card);
         });
     }
 }

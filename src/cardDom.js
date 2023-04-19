@@ -1,98 +1,9 @@
-import { ToDoCard, ProjectLogic } from "./classes";
 import { CurrentProject } from ".";
-import bin from "./bin.svg";
-import edit from "./edit.svg";
+import { formCancel, formDescription, formDueDate, formForm, formFormEdit, 
+    formPriority, formSubmit, formTitle, deleteBin, editCardIcon, formSubmitEdit} from './cardFormElements'
 
 
 const content = document.querySelector(".todos");
-
-
-function formTitle(){
-    const titleinput = document.createElement("input");
-    titleinput.type = "text";
-    titleinput.placeholder = "Title";
-    titleinput.required = true;
-    return titleinput;
-}
-
-function formDescription(){
-    const descriptioninput = document.createElement("textarea");
-    descriptioninput.placeholder = "Description";
-    descriptioninput.id = "descriptioninput";
-    return descriptioninput;
-}
-
-function formDueDate(){
-    const dueDateinput = document.createElement("input");
-    dueDateinput.type = "datetime-local";
-    dueDateinput.placeholder = "Due date";
-    dueDateinput.pattern = "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}";
-    return dueDateinput;
-}
-
-function formPriority(){
-    const priorityinput = document.createElement("select");
-    const options = ["Low", "Medium", "High"];
-    const optionInfo = document.createElement("option");
-    optionInfo.value = "";
-    optionInfo.text = "Choose priority";
-    priorityinput.appendChild(optionInfo);
-    options.forEach(element => {
-        const option = document.createElement("option");
-        option.value = element;
-        option.text = element;
-        priorityinput.appendChild(option);
-    });
-    return priorityinput;
-}
-
-function formSubmit(){
-    const submit = document.createElement("button");
-    submit.classList.add("cardformbutton")
-    submit.innerText = "Add"; 
-    return submit;
-}
-
-function formCancel(form){
-    const cancel = document.createElement("button");
-    cancel.classList.add("cardformbutton")
-    cancel.innerText = "Cancel";
-    cancel.addEventListener("click", (e) => {
-        e.preventDefault();  
-        form.remove();
-    })
-    return cancel;
-}
-
-function formForm(titleinput, descriptioninput, dueDateinput, priorityinput){
-    const form = document.createElement("form");
-    form.id = "cardForm";
-    form.addEventListener("submit", (e) => {
-        form.remove();
-        const uniqueID = 'id' + (new Date()).getTime();
-        const newToDo = new ToDoCard(titleinput.value, descriptioninput.value, dueDateinput.value, priorityinput.value, uniqueID);
-        console.log(CurrentProject);
-        CurrentProject.add(newToDo);
-        CurrentProject.showAllCards();
-        renderCard(newToDo);
-        e.preventDefault();   
-    });
-    return form;
-}
-
-function formFormEdit(card, titleinput, descriptioninput, dueDateinput, priorityinput, index){
-    const form = document.createElement("form");
-    form.id = "cardForm";
-    form.addEventListener("submit", (e) => {
-        form.remove();
-        console.log(CurrentProject);
-        CurrentProject.edit(card, titleinput.value, descriptioninput.value, dueDateinput.value, priorityinput.value);
-        CurrentProject.showAllCards();
-        renderCard(card, index);
-        e.preventDefault();   
-    });
-    return form;
-}
 
 function fillNewCard(){
     const addCard = document.querySelector("button.addCard");
@@ -115,30 +26,6 @@ function fillNewCard(){
         form.appendChild(buttons);
         content.appendChild(form); 
     })
-}
-
-function deleteBin(card, toDo){
-    const deleteIcon = document.createElement("img");
-    deleteIcon.src = bin;
-    deleteIcon.addEventListener("click", () => {
-        removeCard(card);
-        toDo.remove();
-    })
-    return deleteIcon;
-}
-
-function editCardIcon(card, toDo){  
-    const editIcon = document.createElement("img");
-    editIcon.src = edit;
-    editIcon.addEventListener("click", () => {
-        console.log(card.uniqueID)
-        const child = document.getElementById(card.uniqueID);
-        const index = Array.from(child.parentElement.children).indexOf(child);
-        console.log(index);
-        toDo.remove();
-        editCard(card, index);
-    })
-    return editIcon;
 }
 
 function priorityCardColor(toDo, priority){
@@ -190,7 +77,7 @@ function editCard(card, index){
     const form = formFormEdit(card, titleinput, descriptioninput, dueDateinput, priorityinput, index);
     const buttons = document.createElement("div");
     buttons.classList.add("cardformbutton");
-    const submit = formSubmit();
+    const submit = formSubmitEdit();
     const cancel = formCancel(form);
     form.appendChild(titleinput);
     form.appendChild(descriptioninput);    
@@ -206,4 +93,4 @@ function removeCard(card){
     CurrentProject.remove(card);
 }
 
-export {fillNewCard, renderCard}
+export {fillNewCard, renderCard, editCard, removeCard}
