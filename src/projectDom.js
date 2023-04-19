@@ -59,7 +59,11 @@ function renderProjectName(project){
     return whichProject;
 }
 
-    
+function renderProjectColor(projectDom){
+    document.querySelectorAll("div.project").forEach(el => el.style.backgroundColor = "#fafafa");
+    projectDom.style.backgroundColor = "#7dd3fc";
+}  
+
 function renderProject(project){
     const newproject = document.createElement("div");
     newproject.classList.add("project");
@@ -72,6 +76,7 @@ function renderProject(project){
             todos.removeChild(todos.firstChild);
         }
         renderProjectName(project);
+        renderProjectColor(newproject);
         console.log(project)
         project.renderAllCards();
         CurrentProject = project;

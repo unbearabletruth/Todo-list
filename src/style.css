@@ -18,7 +18,7 @@
     padding: 15px;
     grid-row: 1;
     grid-column: 1 / 3;
-    background-color: #ede9fe;
+    background-color: #818cf8;
     color: #404040;
     font-size: 26px;
     font-weight: bold;
@@ -33,8 +33,7 @@ div.sidebar {
     gap: 5px;
     grid-row: 2 / 3;
     grid-column: 1;
-    background-color: #fafafa;
-    padding: 10px;
+    background-color: white;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 
@@ -49,7 +48,7 @@ button.addProject {
     top: 8px;
     width: 120px;
     height: 30px;
-    background-color: #0e7490;
+    background-color: #0ea5e9;
     border-radius: 10px;
     border: 0px;
     font-weight: bold;
@@ -76,11 +75,14 @@ form#projectForm {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin: 10px 0px;
+    padding: 0px 10px;
     align-items: center;
 }
 
 button.cardformbutton:hover {
     background-color: #7c3aed;
+    cursor: pointer;
 }
 
 .content {
@@ -93,7 +95,7 @@ button.addCard {
     right: 20px;
     width: 170px;
     height: 60px;
-    background-color: #0e7490;
+    background-color: #0ea5e9;
     border-radius: 10px;
     border: 0px;
     font-size: 22px;
@@ -114,7 +116,8 @@ button#projectsubmitbutton {
 
 button.addCard:hover,
 button.addProject:hover {
-    background-color: #0891b2;
+    background-color: #0284c7;
+    cursor: pointer;
 }
 
 .todos {
@@ -201,20 +204,20 @@ textarea:focus {
 }
 
 div.project {
-    background-color: #14b8a6;
-    padding: 3px 0px;
+    background-color: #fafafa;
+    padding: 15px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #404040;
     font-size: 16px;
     font-weight: bold;
-    border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 
 div.project:hover {
-    background-color: #2dd4bf;
+    background-color: #818cf8;
+    cursor: pointer;
 }
 
 ::placeholder { 
@@ -237,6 +240,7 @@ img {
 
 img:hover {
     transform: scale(1.3);
+    cursor: pointer;
 }
 
 div#cardIcons {
