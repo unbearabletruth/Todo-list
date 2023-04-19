@@ -129,7 +129,7 @@ button.addProject:hover {
     flex-direction: column;
     background-color: #ddd6fe;
     height: 300px;
-    padding: 35px;
+    padding: 25px;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     justify-content: space-between;
@@ -233,4 +233,14 @@ p.currentproject {
 img {
     width: 15px;
     height: auto;
+}
+
+img:hover {
+    transform: scale(1.3);
+}
+
+div#cardIcons {
+    display: flex;
+    justify-content: end;
+    gap: 25px;
 }

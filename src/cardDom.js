@@ -52,16 +52,19 @@ function renderCard(card, index){
     dueDate1.textContent = `Due: ${card.dueDate}`;
     const priority1 = document.createElement("p");
     priority1.textContent = `Priority: ${card.priority}`;
-    const deleteIcon = deleteBin(card, toDo);
     toDo.appendChild(title1);
     toDo.appendChild(description1);
     toDo.appendChild(dueDate1);
     toDo.appendChild(priority1);
-    toDo.appendChild(deleteIcon);
     content.insertBefore(toDo, content.children[index]);
     priorityCardColor(toDo, card.priority);
+    const icons = document.createElement("div");
+    icons.id = "cardIcons";
     const editIcon = editCardIcon(card, toDo);
-    toDo.appendChild(editIcon);
+    const deleteIcon = deleteBin(card, toDo);
+    icons.appendChild(editIcon);
+    icons.appendChild(deleteIcon);
+    toDo.appendChild(icons);
 }
 
 function editCard(card, index){
