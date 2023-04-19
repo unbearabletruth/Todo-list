@@ -1,4 +1,4 @@
-import { renderNewCard } from "./cardDom";
+import { renderCard } from "./cardDom";
 
 class ToDoCard {
     constructor(title, description, dueDate, priority, uniqueID) {

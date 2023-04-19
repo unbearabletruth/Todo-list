@@ -74,7 +74,7 @@ function formForm(titleinput, descriptioninput, dueDateinput, priorityinput){
         console.log(CurrentProject);
         CurrentProject.add(newToDo);
         CurrentProject.showAllCards();
-        renderNewCard(newToDo);
+        renderCard(newToDo);
         e.preventDefault();   
     });
     return form;
@@ -85,12 +85,10 @@ function formFormEdit(card, titleinput, descriptioninput, dueDateinput, priority
     form.id = "cardForm";
     form.addEventListener("submit", (e) => {
         form.remove();
-        const uniqueID = 'id' + (new Date()).getTime();
-        const newToDo = new ToDoCard(titleinput.value, descriptioninput.value, dueDateinput.value, priorityinput.value, uniqueID);
         console.log(CurrentProject);
         CurrentProject.edit(card, titleinput.value, descriptioninput.value, dueDateinput.value, priorityinput.value);
         CurrentProject.showAllCards();
-        renderNewCard(newToDo, index);
+        renderCard(card, index);
         e.preventDefault();   
     });
     return form;
@@ -128,7 +126,7 @@ function deleteBin(card, toDo){
     })
     return deleteIcon;
 }
-//here we go
+
 function editCardIcon(card, toDo){  
     const editIcon = document.createElement("img");
     editIcon.src = edit;
@@ -155,7 +153,7 @@ function priorityCardColor(toDo, priority){
     }
 }
 
-function renderNewCard(card, index){
+function renderCard(card, index){
     const toDo = document.createElement("div");
     toDo.id = card.uniqueID;
     toDo.classList.add("toDocard");
@@ -208,6 +206,4 @@ function removeCard(card){
     CurrentProject.remove(card);
 }
 
-export {fillNewCard, renderNewCard}
-
-//get index of card and place at that index edited one
+export {fillNewCard, renderCard}
