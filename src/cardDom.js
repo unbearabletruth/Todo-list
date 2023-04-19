@@ -1,6 +1,7 @@
 import { ToDoCard, ProjectLogic } from "./classes";
 import { CurrentProject } from ".";
 import bin from "./bin.svg";
+import edit from "./edit.svg";
 
 
 const content = document.querySelector(".todos");
@@ -112,6 +113,16 @@ function deleteBin(card, toDo){
     return deleteIcon;
 }
 
+function editCardIcon(card, toDo){
+    const editIcon = document.createElement("img");
+    editIcon.src = edit;
+    editIcon.addEventListener("click", () => {
+        toDo.remove();
+        editCard(card, toDo);
+    })
+    return editIcon;
+}
+
 function priorityCardColor(toDo, priority){
     if (priority === "High"){
         toDo.style.backgroundColor = "#fca5a5";
@@ -135,14 +146,41 @@ function renderNewCard(card){
     dueDate1.textContent = `Due: ${card.dueDate}`;
     const priority1 = document.createElement("p");
     priority1.textContent = `Priority: ${card.priority}`;
+    const editIcon = editCardIcon(card, toDo);
     const deleteIcon = deleteBin(card, toDo);
     toDo.appendChild(title1);
     toDo.appendChild(description1);
     toDo.appendChild(dueDate1);
     toDo.appendChild(priority1);
     toDo.appendChild(deleteIcon);
+    toDo.appendChild(editIcon);
     content.appendChild(toDo);
     priorityCardColor(toDo, card.priority);
+}
+
+function editCard(card){
+    const titleinput = formTitle();
+    console.log(card.title)
+    titleinput.value = card.title;
+    const descriptioninput = formDescription();
+    descriptioninput.value = card.description;
+    const dueDateinput = formDueDate();
+    dueDateinput.value = card.dueDate;
+    const priorityinput = formPriority();
+    priorityinput.value = card.priority;
+    const form = formForm(titleinput, descriptioninput, dueDateinput, priorityinput);
+    const buttons = document.createElement("div");
+    buttons.classList.add("cardformbutton");
+    const submit = formSubmit();
+    const cancel = formCancel(form);
+    form.appendChild(titleinput);
+    form.appendChild(descriptioninput);    
+    form.appendChild(dueDateinput);
+    form.appendChild(priorityinput);
+    buttons.appendChild(submit);
+    buttons.appendChild(cancel);
+    form.appendChild(buttons);
+    content.appendChild(form); 
 }
 
 function removeCard(card){

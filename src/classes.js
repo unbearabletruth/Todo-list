@@ -28,6 +28,10 @@ class ProjectLogic {
         console.log(this.toDoList);
     }
 
+    edit(card){
+        //replace array item
+    }
+
     showAllCards(){
         this.toDoList.forEach(card => {
             console.log(card);
