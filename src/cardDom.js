@@ -10,6 +10,7 @@ function formTitle(){
     const titleinput = document.createElement("input");
     titleinput.type = "text";
     titleinput.placeholder = "Title";
+    titleinput.required = true;
     return titleinput;
 }
 
@@ -44,20 +45,10 @@ function formPriority(){
     return priorityinput;
 }
 
-function formSubmit(form, titleinput, descriptioninput, dueDateinput, priorityinput){
+function formSubmit(){
     const submit = document.createElement("button");
     submit.classList.add("cardformbutton")
-    submit.innerText = "Add";
-    submit.addEventListener("click", (e) => {
-        form.remove();
-        const uniqueID = 'id' + (new Date()).getTime();
-        const newToDo = new ToDoCard(titleinput.value, descriptioninput.value, dueDateinput.value, priorityinput.value, uniqueID);
-        console.log(CurrentProject);
-        CurrentProject.add(newToDo);
-        CurrentProject.showAllCards();
-        renderNewCard(newToDo);
-        e.preventDefault();   
-    });
+    submit.innerText = "Add"; 
     return submit;
 }
 
@@ -72,18 +63,33 @@ function formCancel(form){
     return cancel;
 }
 
+function formForm(titleinput, descriptioninput, dueDateinput, priorityinput){
+    const form = document.createElement("form");
+    form.id = "cardForm";
+    form.addEventListener("submit", (e) => {
+        form.remove();
+        const uniqueID = 'id' + (new Date()).getTime();
+        const newToDo = new ToDoCard(titleinput.value, descriptioninput.value, dueDateinput.value, priorityinput.value, uniqueID);
+        console.log(CurrentProject);
+        CurrentProject.add(newToDo);
+        CurrentProject.showAllCards();
+        renderNewCard(newToDo);
+        e.preventDefault();   
+    });
+    return form;
+}
+
 function fillNewCard(){
     const addCard = document.querySelector("button.addCard");
     addCard.addEventListener("click", () => {
-        const form = document.createElement("form");
-        form.id = "cardForm";
         const titleinput = formTitle();
         const descriptioninput = formDescription();
         const dueDateinput = formDueDate();
-        const priorityinput = formPriority(); 
+        const priorityinput = formPriority();
+        const form = formForm(titleinput, descriptioninput, dueDateinput, priorityinput);
         const buttons = document.createElement("div");
-        buttons.classList.add("cardformbutton")
-        const submit = formSubmit(form, titleinput, descriptioninput, dueDateinput, priorityinput);
+        buttons.classList.add("cardformbutton");
+        const submit = formSubmit();
         const cancel = formCancel(form);
         form.appendChild(titleinput);
         form.appendChild(descriptioninput);    
