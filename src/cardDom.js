@@ -112,6 +112,18 @@ function deleteBin(card, toDo){
     return deleteIcon;
 }
 
+function priorityCardColor(toDo, priority){
+    if (priority === "High"){
+        toDo.style.backgroundColor = "#fca5a5";
+    }
+    else if (priority === "Medium"){
+        toDo.style.backgroundColor = "#fdba74";
+    }
+    else if (priority === "Low"){
+        toDo.style.backgroundColor = "#fcd34d";
+    }
+}
+
 function renderNewCard(card){
     const toDo = document.createElement("div");
     toDo.classList.add("toDocard");
@@ -130,6 +142,7 @@ function renderNewCard(card){
     toDo.appendChild(priority1);
     toDo.appendChild(deleteIcon);
     content.appendChild(toDo);
+    priorityCardColor(toDo, card.priority);
 }
 
 function removeCard(card){
