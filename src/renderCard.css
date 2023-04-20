@@ -1,0 +1,18 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.renderedCard {
+    display: flex;
+    flex-direction: column;
+}
+
+.renderedCardHead {
+    font-size: 14px;
+}
+
+.renderedCardText {
+    overflow-wrap: break-word;
+}

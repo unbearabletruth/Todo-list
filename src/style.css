@@ -163,7 +163,7 @@ form#cardForm {
 
 input {
     appearance: none;
-    background-color: #ede9fe;
+    background-color: #f5f3ff;
     border: 0px;
     height: 27px;
     border-radius: 10px;
@@ -184,7 +184,7 @@ input#projectinput:focus {
 }
 
 select {
-    background-color: #ede9fe;
+    background-color: #f5f3ff;
     border: 0px;
     height: 25px;
     border-radius: 10px;
@@ -204,7 +204,7 @@ textarea {
     height: 100px;
     border: 0px;
     border-radius: 10px;
-    background-color: #ede9fe;
+    background-color: #f5f3ff;
     color: #404040;
     font-size: 16px;
 }
@@ -269,4 +269,9 @@ div#cardIcons {
     display: flex;
     justify-content: end;
     gap: 25px;
+}
+
+input:invalid,
+textarea:invalid {
+    border: 2px solid #f87171;
 }
