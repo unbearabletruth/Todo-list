@@ -1,5 +1,6 @@
 import { CurrentProject } from ".";
 import './renderCard.css';
+import { format, parseISO } from 'date-fns';
 import { formCancel, formDescription, formDueDate, formForm, formFormEdit, 
     formPriority, formSubmit, formTitle, deleteBin, editCardIcon, formSubmitEdit} from './cardFormElements'
 
@@ -70,7 +71,9 @@ function renderDueDate(card){
     title.textContent = "Due date";
     const text = document.createElement("p");
     text.classList.add("renderedCardText");
-    text.textContent = `${card.dueDate}`;
+    const formatDate = format(parseISO(card.dueDate), 'dd MMM yy HH:mm')
+    text.textContent = `${formatDate}`;
+    //text.textContent = `${card.dueDate}`;
     dueDate.appendChild(title);
     dueDate.appendChild(text);
     return dueDate;

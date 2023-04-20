@@ -37,7 +37,7 @@ export function formFormEdit(card, titleinput, descriptioninput, dueDateinput, p
 export function formTitle(){
     const titleinput = document.createElement("input");
     titleinput.type = "text";
-    titleinput.placeholder = "Title*";
+    titleinput.placeholder = "Title";
     titleinput.required = true;
     titleinput.maxLength = 20;
     return titleinput;
