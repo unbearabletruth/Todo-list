@@ -17,9 +17,20 @@ function projectFormName(){
 
 function projectFormSubmit(){
     const submit = document.createElement("button");
-    submit.id = "projectsubmitbutton";
+    submit.classList.add("projectFormButtons");
     submit.innerText = "Add";
     return submit;
+}
+
+function projectFormCancel(form){
+    const cancel = document.createElement("button");
+    cancel.classList.add("projectFormButtons");
+    cancel.innerText = "Cancel";
+    cancel.addEventListener("click", (e) => {
+        e.preventDefault(); 
+        form.remove();
+    })
+    return cancel;
 }
 
 function projectFormForm(nameinput){
@@ -39,9 +50,14 @@ function createNewProject(){
     addProject.addEventListener("click", () => {
         const nameinput = projectFormName();
         const submit = projectFormSubmit();
+        const buttons = document.createElement("div");
+        buttons.id = "projectFormButtons";
         const formProject = projectFormForm(nameinput);
+        const cancel = projectFormCancel(formProject);
         formProject.appendChild(nameinput);
-        formProject.appendChild(submit);
+        buttons.appendChild(submit);
+        buttons.appendChild(cancel);
+        formProject.appendChild(buttons);
         sidebar.appendChild(formProject);   
     })
 }
@@ -60,8 +76,9 @@ function renderProjectName(project){
 }
 
 function renderProjectColor(projectDom){
-    document.querySelectorAll("div.project").forEach(el => el.style.backgroundColor = "#fafafa");
-    projectDom.style.backgroundColor = "#7dd3fc";
+    const projects = document.querySelectorAll("div.project");
+    projects.forEach(project => project.style.backgroundColor = "#fafafa");//check if color 1 element is better
+    projectDom.style.backgroundColor = "#38bdf8";//hover overrides selected
 }  
 
 function renderProject(project){

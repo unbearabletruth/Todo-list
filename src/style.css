@@ -34,7 +34,7 @@ div.sidebar {
     grid-row: 2 / 3;
     grid-column: 1;
     background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border: 1px solid #e5e5e5;
 }
 
 .projects {
@@ -48,7 +48,7 @@ button.addProject {
     top: 8px;
     width: 120px;
     height: 30px;
-    background-color: #0ea5e9;
+    background-color: #38bdf8;
     border-radius: 10px;
     border: 0px;
     font-weight: bold;
@@ -91,11 +91,15 @@ button.cardformbutton:hover {
 
 button.addCard {
     position: absolute;
+    display: flex;
+    gap:10px;
+    justify-content: center;
+    align-items: center;
     top: 20px;
     right: 20px;
     width: 170px;
     height: 60px;
-    background-color: #0ea5e9;
+    background-color: #38bdf8;
     border-radius: 10px;
     border: 0px;
     font-size: 22px;
@@ -104,10 +108,15 @@ button.addCard {
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 
-button#projectsubmitbutton {
-    width: 50px;
+#projectFormButtons {
+    display: flex;
+    gap: 20px;
+}
+
+button.projectFormButtons {
+    width: 60px;
     height: 25px;
-    background-color: #0e7490;
+    background-color: #38bdf8;
     border-radius: 10px;
     border: 0px;
     font-weight: bold;
@@ -115,8 +124,9 @@ button#projectsubmitbutton {
 }
 
 button.addCard:hover,
-button.addProject:hover {
-    background-color: #0284c7;
+button.addProject:hover,
+button#projectsubmitbutton:hover {
+    background-color: #0ea5e9;
     cursor: pointer;
 }
 
@@ -163,8 +173,14 @@ input {
 }
 
 input#projectinput {
+    width: 90%;
     height: 23px;
     background-color: white;
+    border: 1px solid #d4d4d4;
+}
+
+input#projectinput:focus {
+    border: 1px solid #0ea5e9;
 }
 
 select {
@@ -212,11 +228,11 @@ div.project {
     color: #404040;
     font-size: 16px;
     font-weight: bold;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 div.project:hover {
-    background-color: #818cf8;
+    background-color: #e5e5e5 !important;
     cursor: pointer;
 }
 
@@ -233,14 +249,20 @@ p.currentproject {
     font-weight: bold;
 }
 
-img {
+img.cardimg {
     width: 15px;
     height: auto;
 }
 
-img:hover {
+img.cardimg:hover {
     transform: scale(1.3);
     cursor: pointer;
+}
+
+img.addCard {
+    width: 30px;
+    height: auto;
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(279deg) brightness(106%) contrast(106%);
 }
 
 div#cardIcons {

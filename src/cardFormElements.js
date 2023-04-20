@@ -100,6 +100,7 @@ export function formCancel(form){
 
 export function deleteBin(card, toDo){
     const deleteIcon = document.createElement("img");
+    deleteIcon.classList.add("cardimg");
     deleteIcon.src = bin;
     deleteIcon.addEventListener("click", () => {
         removeCard(card);
@@ -111,6 +112,7 @@ export function deleteBin(card, toDo){
 
 export function editCardIcon(card, toDo){  
     const editIcon = document.createElement("img");
+    editIcon.classList.add("cardimg");
     editIcon.src = edit;
     editIcon.addEventListener("click", () => {
         console.log(card.uniqueID)
