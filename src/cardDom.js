@@ -43,14 +43,14 @@ function priorityCardColor(toDo, priority){
 
 function renderTitle(card){
     const title = document.createElement("p");
-    title.classList.add("renderedCard");
-    title.textContent = `Task: ${card.title}`;
+    title.id = "renderedTitle";
+    title.textContent = `${card.title.charAt(0).toUpperCase() + card.title.slice(1)}`;
     return title;
 }
 
 function renderDescription(card){
     const description = document.createElement("div");
-    description.classList.add("renderedCard");
+    description.id = "renderedDescription";
     const title = document.createElement("p");
     title.classList.add("renderedCardHead");
     title.textContent = "Description";
@@ -63,16 +63,30 @@ function renderDescription(card){
 }
 
 function renderDueDate(card){
-    const dueDate = document.createElement("p");
-    dueDate.classList.add("renderedCard");
-    dueDate.textContent = `Due: ${card.dueDate}`;
+    const dueDate = document.createElement("div");
+    dueDate.id = "renderedDueDate";
+    const title = document.createElement("p");
+    title.classList.add("renderedCardHead");
+    title.textContent = "Due date";
+    const text = document.createElement("p");
+    text.classList.add("renderedCardText");
+    text.textContent = `${card.dueDate}`;
+    dueDate.appendChild(title);
+    dueDate.appendChild(text);
     return dueDate;
 }
 
 function renderPriority(card){
-    const priority = document.createElement("p");
-    priority.classList.add("renderedCard");
-    priority.textContent = `Priority: ${card.priority}`;
+    const priority = document.createElement("div");
+    priority.id = "renderedPriority";
+    const title = document.createElement("p");
+    title.classList.add("renderedCardHead");
+    title.textContent = "Priority";
+    const text = document.createElement("p");
+    text.classList.add("renderedCardText");
+    text.textContent = `${card.priority}`;
+    priority.appendChild(title);
+    priority.appendChild(text);
     return priority;
 }
 

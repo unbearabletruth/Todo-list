@@ -2,6 +2,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 .wrapper {
@@ -147,7 +148,6 @@ button#projectsubmitbutton:hover {
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     justify-content: space-between;
     color: #404040;
-    font-size: 20px;
 }
 
 form#cardForm {
@@ -161,7 +161,8 @@ form#cardForm {
     justify-content: space-evenly;
 }
 
-input {
+input[type="text"],
+input[type="datetime-local"] {
     appearance: none;
     background-color: #f5f3ff;
     border: 0px;

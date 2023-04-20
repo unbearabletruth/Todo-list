@@ -9,10 +9,37 @@
     flex-direction: column;
 }
 
+#renderedTitle,
+#renderedDescription,
+#renderedDueDate,
+#renderedPriority {
+    gap: 5px;
+}
+
+#renderedTitle {
+    display: flex;
+    flex: 1;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#renderedDescription {
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+}
+
+#renderedDueDate {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+}
+
 .renderedCardHead {
     font-size: 14px;
 }
 
 .renderedCardText {
     overflow-wrap: break-word;
+    font-size: 18px;
 }
