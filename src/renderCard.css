@@ -35,6 +35,12 @@
     flex: 2;
 }
 
+#renderedPriority {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+}
+
 .renderedCardHead {
     font-size: 14px;
 }

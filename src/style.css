@@ -246,7 +246,8 @@ p.currentproject {
     position: absolute;
     left: 20px;
     top: 20px;
-    color: #404040;
+    color: #a3a3a3;
+    font-size: 22px;
     font-weight: bold;
 }
 
