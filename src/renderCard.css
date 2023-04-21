@@ -16,7 +16,7 @@
     gap: 5px;
 }
 
-#renderedTitle {
+.toDocard #renderedTitle {
     display: flex;
     flex: 1;
     font-weight: bold;
@@ -41,11 +41,31 @@
     flex: 2;
 }
 
-.renderedCardHead {
+.toDocard .renderedCardHead {
     font-size: 14px;
+    color: #525252;
 }
 
-.renderedCardText {
+.toDocard .renderedCardText {
     overflow-wrap: break-word;
     font-size: 18px;
+}
+
+
+
+.bigToDoCard #renderedTitle {
+    display: flex;
+    flex: 1;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.bigToDoCard .renderedCardHead {
+    font-size: 20px;
+    color: #525252
+}
+
+.bigToDoCard .renderedCardText {
+    overflow-wrap: break-word;
+    font-size: 26px;
 }

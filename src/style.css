@@ -157,6 +157,7 @@ button#projectsubmitbutton:hover {
     top: 0;
     bottom: 0;
     margin: auto;
+    font-size: 1.5em;
     width: 400px;
     height: 500px;
     display: flex;
@@ -164,9 +165,9 @@ button#projectsubmitbutton:hover {
     background-color: #ddd6fe;
     padding: 25px;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     justify-content: space-between;
     color: #404040;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 form#cardForm {
@@ -253,7 +254,7 @@ div.project {
 }
 
 div.projectCounter {
-    color: whitesmoke;
+    color: white;
     background-color: #a3a3a3;
     font-size: 12px;
     padding: 2px 8px;
@@ -277,7 +278,7 @@ p.currentproject {
     position: absolute;
     left: 20px;
     top: 20px;
-    color: #a3a3a3;
+    color: #737373;
     font-size: 22px;
     font-weight: bold;
 }

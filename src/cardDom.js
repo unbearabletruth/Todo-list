@@ -140,13 +140,13 @@ function editCard(card, index){
     const buttons = document.createElement("div");
     buttons.classList.add("cardformbutton");
     const submit = formSubmitEdit();
-    const cancel = formCancel(form);
+    //const cancel = formCancel(form); //make it undo changes instead
     form.appendChild(titleinput);
     form.appendChild(descriptioninput);    
     form.appendChild(dueDateinput);
     form.appendChild(priorityinput);
     buttons.appendChild(submit);
-    buttons.appendChild(cancel);
+    //buttons.appendChild(cancel);
     form.appendChild(buttons);
     content.insertBefore(form, content.children[index]);
 }
