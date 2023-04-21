@@ -117,13 +117,13 @@ function renderCard(card, index){
     icons.appendChild(editIcon);
     icons.appendChild(deleteIcon);
     toDo.appendChild(icons);
-    toDo.addEventListener("click", () => {
-        toggleCard(toDo)});
+    toggleCard(toDo);
 }
 
 function toggleCard(card){
-    console.log(card.className === "toDocard")
-    card.className = card.className === "toDocard" ? "bigToDoCard" : "toDocard";
+    card.addEventListener("click", () => {
+        card.className = card.className === "toDocard" ? "bigToDoCard" : "toDocard";
+    })   
 }
 
 function editCard(card, index){

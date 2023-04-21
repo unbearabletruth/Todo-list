@@ -151,10 +151,17 @@ button#projectsubmitbutton:hover {
 }
 
 .bigToDoCard {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 400px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     background-color: #ddd6fe;
-    height: 600px;
     padding: 25px;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
