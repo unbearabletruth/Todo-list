@@ -3,6 +3,7 @@ import edit from "./edit.svg";
 import { CurrentProject } from ".";
 import { renderCard, editCard, removeCard } from "./cardDom";
 import { ToDoCard } from "./classes";
+import { projectNumberofCards } from "./projectDom";
 
 export function formForm(titleinput, descriptioninput, dueDateinput, priorityinput){
     const form = document.createElement("form");
@@ -13,6 +14,9 @@ export function formForm(titleinput, descriptioninput, dueDateinput, priorityinp
         const newToDo = new ToDoCard(titleinput.value, descriptioninput.value, dueDateinput.value, priorityinput.value, uniqueID);
         console.log(CurrentProject);
         CurrentProject.add(newToDo);
+        console.log(CurrentProject.getLength())
+        projectNumberofCards(CurrentProject);//
+        
         CurrentProject.showAllCards();
         renderCard(newToDo);
         e.preventDefault();   
@@ -106,6 +110,7 @@ export function deleteBin(card, toDo){
     deleteIcon.src = bin;
     deleteIcon.addEventListener("click", () => {
         removeCard(card);
+        projectNumberofCards(CurrentProject);
         //CurrentProject.remove(card); mb do it directly
         toDo.remove();
     })

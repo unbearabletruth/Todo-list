@@ -15,6 +15,15 @@ function projectFormName(){
     return nameinput;
 }
 
+function projectNumberofCards(project){
+    const counter = document.getElementById(`${project.index}`);
+    if (project.getLength() === 1){
+        counter.textContent = `${project.getLength()} task`;
+    }else{
+        counter.textContent = `${project.getLength()} tasks`;
+    } 
+}
+
 function projectFormSubmit(){
     const submit = document.createElement("button");
     submit.classList.add("projectFormButtons");
@@ -37,7 +46,8 @@ function projectFormForm(nameinput){
     const formProject = document.createElement("form");
     formProject.id = "projectForm";
     formProject.addEventListener("submit", (e) => {
-        const newProjectL = new ProjectLogic(nameinput.value);
+        const projectIndex = 'id' + (new Date()).getTime();
+        const newProjectL = new ProjectLogic(nameinput.value, projectIndex);
         renderProject(newProjectL);
         formProject.remove();  
         e.preventDefault();   
@@ -81,10 +91,20 @@ function renderProjectColor(projectDom){
     projectDom.style.backgroundColor = "#38bdf8";//hover overrides selected
 }  
 
+function renderProjectTaskCounter(project){
+    const counter = document.createElement("div");
+    counter.id = project.index;
+    counter.classList.add("projectCounter");
+    counter.textContent = `${project.getLength()} tasks`;
+    return counter;
+}
+
 function renderProject(project){
     const newproject = document.createElement("div");
     newproject.classList.add("project");
     newproject.textContent = project.name;
+    const counter = renderProjectTaskCounter(project);
+    newproject.appendChild(counter);
     sidebar.appendChild(newproject);
     allprojects.add(project);
     newproject.addEventListener("click", () => {
@@ -101,4 +121,4 @@ function renderProject(project){
 }
 
 fillNewCard();
-export {createNewProject, renderProject, renderProjectName};
+export {createNewProject, renderProject, renderProjectName, projectNumberofCards};

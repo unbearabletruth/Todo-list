@@ -71,9 +71,12 @@ function renderDueDate(card){
     title.textContent = "Due date";
     const text = document.createElement("p");
     text.classList.add("renderedCardText");
-    const formatDate = format(parseISO(card.dueDate), 'dd MMM yy HH:mm')//how to change date placeholder
-    text.textContent = `${formatDate}`;
-    //text.textContent = `${card.dueDate}`;
+    if (card.dueDate !== ""){
+        const formatDate = format(parseISO(card.dueDate), 'dd MMM yy HH:mm')//how to change date placeholder
+        text.textContent = `${formatDate}`;
+    }else {
+        text.textContent = `${card.dueDate}`;
+    }
     dueDate.appendChild(title);
     dueDate.appendChild(text);
     return dueDate;

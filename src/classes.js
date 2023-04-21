@@ -13,9 +13,10 @@ class ToDoCard {
 
 class ProjectLogic {
     
-    constructor(name) {
+    constructor(name, index) {
         this.toDoList = [];
         this.name = name;
+        this.index = index;
     }
 
     add(card){
@@ -38,6 +39,11 @@ class ProjectLogic {
                 task.priority = priorityinput;
             }
         }
+    }
+
+    getLength(){
+        let len = this.toDoList.length;
+        return len;
     }
 
     showAllCards(){
