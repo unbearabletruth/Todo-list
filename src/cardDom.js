@@ -1,5 +1,7 @@
 import { CurrentProject } from ".";
 import './renderCard.css';
+import { ToDoCard } from "./classes";
+import { projectNumberofCards } from "./projectDom";
 import { format, parseISO } from 'date-fns';
 import { formCancel, formDescription, formDueDate, formForm, formFormEdit, 
     formPriority, formSubmit, formTitle, deleteBin, editCardIcon, formSubmitEdit} from './cardFormElements'
@@ -155,4 +157,18 @@ function removeCard(card){
     CurrentProject.remove(card);
 }
 
-export {fillNewCard, renderCard, editCard, removeCard}
+function renderWelcomeCard(){
+    const uniqueID = 'id' + (new Date()).getTime();
+    const title = "Welcome";
+    const description = "This is a welcoming card! Just click the bin icon below to delete it!";
+    const dueDate = "2018-06-07T00:00";
+    const priority = "Low";
+    const newToDo = new ToDoCard(title, description, dueDate, priority, uniqueID);
+    CurrentProject.add(newToDo);
+    projectNumberofCards(CurrentProject);
+    renderCard(newToDo);
+}
+
+
+
+export {fillNewCard, renderCard, editCard, removeCard, renderWelcomeCard}

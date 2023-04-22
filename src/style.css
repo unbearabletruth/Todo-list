@@ -23,7 +23,7 @@
     color: #404040;
     font-size: 26px;
     font-weight: bold;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     z-index: 1;
 }
 
@@ -35,7 +35,9 @@ div.sidebar {
     grid-row: 2 / 3;
     grid-column: 1;
     background-color: white;
-    border: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
 }
 
 .projects {
@@ -45,8 +47,8 @@ div.sidebar {
 
 button.addProject {
     position: absolute;
-    right: 8px;
-    top: 8px;
+    right: 10px;
+    top: 10px;
     width: 120px;
     height: 30px;
     background-color: #38bdf8;
@@ -126,14 +128,15 @@ button.projectFormButtons {
 
 button.addCard:hover,
 button.addProject:hover,
-button#projectsubmitbutton:hover {
+button#projectsubmitbutton:hover,
+button.projectFormButtons:hover {
     background-color: #0ea5e9;
     cursor: pointer;
 }
 
 .todos {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 0.3fr));
+    grid-template-columns: repeat(auto-fit, 250px);
     gap: 100px;
     padding: 100px;
 }
@@ -143,20 +146,18 @@ button#projectsubmitbutton:hover {
     flex-direction: column;
     background-color: #ddd6fe;
     height: 300px;
+    width: 250px;
     padding: 25px;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     justify-content: space-between;
     color: #404040;
+    transition: 0.2s;
+    transition-timing-function: ease-in;
 }
 
 .bigToDoCard {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
+    justify-self: center;
     font-size: 1.5em;
     width: 400px;
     height: 500px;
@@ -168,6 +169,8 @@ button#projectsubmitbutton:hover {
     justify-content: space-between;
     color: #404040;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    transition: 0.2s;
+    transition-timing-function: ease-in;
 }
 
 form#cardForm {
@@ -175,6 +178,7 @@ form#cardForm {
     flex-direction: column;
     background-color: #ddd6fe;
     height: 300px;
+    width: 250px;
     padding: 15px;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
