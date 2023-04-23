@@ -8,6 +8,10 @@ class ToDoCard {
         this.priority = priority;
         this.uniqueID = uniqueID;
     }
+
+    static fromJSON(serializedJson) {
+        return Object.assign(new ToDoCard(), JSON.parse(serializedJson))
+    }
 }
 
 
@@ -46,6 +50,10 @@ class ProjectLogic {
         return len;
     }
 
+    getAllCards(){
+        return this.toDoList;
+    }
+
     showAllCards(){
         this.toDoList.forEach(card => {
             console.log(card);
@@ -56,6 +64,10 @@ class ProjectLogic {
         this.toDoList.forEach(card => {
             renderCard(card);
         });
+    }
+
+    static fromJSON(serializedJson) {
+        return Object.assign(new ProjectLogic(), JSON.parse(serializedJson))
     }
 }
 

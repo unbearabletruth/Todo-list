@@ -1,6 +1,7 @@
 import { fillNewCard } from './cardDom';
 import { ProjectLogic, allprojects } from './classes';
 import { CurrentProject } from '.';
+import { addProjectToStorage } from './storage';
 
 
 const sidebar = document.querySelector(".projects");
@@ -49,6 +50,7 @@ function projectFormForm(nameinput){
         const projectIndex = 'id' + (new Date()).getTime();
         const newProjectL = new ProjectLogic(nameinput.value, projectIndex);
         renderProject(newProjectL);
+        addProjectToStorage(newProjectL);//
         formProject.remove();  
         e.preventDefault();   
     });
@@ -100,6 +102,7 @@ function renderProjectTaskCounter(project){
 }
 
 function renderProject(project){
+    console.log(typeof project)
     const newproject = document.createElement("div");
     newproject.classList.add("project");
     newproject.textContent = project.name;
@@ -121,4 +124,4 @@ function renderProject(project){
 }
 
 fillNewCard();
-export {createNewProject, renderProject, renderProjectName, projectNumberofCards};
+export {createNewProject, renderProject, renderProjectName, projectNumberofCards, renderProjectTaskCounter};

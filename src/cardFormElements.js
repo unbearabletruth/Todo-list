@@ -4,6 +4,7 @@ import { CurrentProject } from ".";
 import { renderCard, editCard, removeCard } from "./cardDom";
 import { ToDoCard } from "./classes";
 import { projectNumberofCards } from "./projectDom";
+import { addCardToProjectStorage } from "./storage";
 
 export function formForm(titleinput, descriptioninput, dueDateinput, priorityinput){
     const form = document.createElement("form");
@@ -14,6 +15,7 @@ export function formForm(titleinput, descriptioninput, dueDateinput, priorityinp
         const newToDo = new ToDoCard(titleinput.value, descriptioninput.value, dueDateinput.value, priorityinput.value, uniqueID);
         console.log(CurrentProject);
         CurrentProject.add(newToDo);
+        addCardToProjectStorage(CurrentProject, newToDo);
         console.log(CurrentProject.getLength())
         projectNumberofCards(CurrentProject);//
         
