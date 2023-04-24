@@ -142,13 +142,11 @@ function editCard(card, index){
     const buttons = document.createElement("div");
     buttons.classList.add("cardformbutton");
     const submit = formSubmitEdit();
-    //const cancel = formCancel(form); //make it undo changes instead
     form.appendChild(titleinput);
     form.appendChild(descriptioninput);    
     form.appendChild(dueDateinput);
     form.appendChild(priorityinput);
     buttons.appendChild(submit);
-    //buttons.appendChild(cancel);
     form.appendChild(buttons);
     content.insertBefore(form, content.children[index]);
 }
@@ -157,18 +155,8 @@ function removeCard(card){
     CurrentProject.remove(card);
 }
 
-function renderWelcomeCard(){
-    const uniqueID = 'id' + (new Date()).getTime();
-    const title = "Welcome";
-    const description = "This is a welcoming card! Just click the bin icon below to delete it!";
-    const dueDate = "2018-06-07T00:00";
-    const priority = "Low";
-    const newToDo = new ToDoCard(title, description, dueDate, priority, uniqueID);
-    CurrentProject.add(newToDo);
-    projectNumberofCards(CurrentProject);
-    renderCard(newToDo);
-}
 
 
 
-export {fillNewCard, renderCard, editCard, removeCard, renderWelcomeCard}
+
+export {fillNewCard, renderCard, editCard, removeCard}
