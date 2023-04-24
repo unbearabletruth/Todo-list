@@ -1,12 +1,13 @@
 import { renderCard } from "./cardDom";
 
 class ToDoCard {
-    constructor(title, description, dueDate, priority, uniqueID) {
+    constructor(title, description, dueDate, priority, uniqueID, projectID) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
         this.uniqueID = uniqueID;
+        this.projectID = projectID;
     }
 
     static fromJSON(serializedJson) {
@@ -67,7 +68,7 @@ class ProjectLogic {
     }
 
     static fromJSON(serializedJson) {
-        return Object.assign(new ProjectLogic(), JSON.parse(serializedJson))
+        return Object.assign(new ProjectLogic(), serializedJson)
     }
 }
 
@@ -86,6 +87,10 @@ class ListofProjects {
         this.projects.forEach(card => {
             console.log(card);
         });
+    }
+
+    getAllProjects(){
+        return this.projects;
     }
 }
 

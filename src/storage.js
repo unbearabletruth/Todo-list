@@ -1,14 +1,19 @@
-import { ProjectLogic, ToDoCard } from "./classes";
+import { ProjectLogic, ToDoCard, allprojects } from "./classes";
 import { renderProject } from "./projectDom";
 
 
 export function addProjectToStorage(project){
-    console.log(project)
-    localStorage.setItem("storedProject", JSON.stringify(project));  
+    const projects = allprojects.getAllProjects();
+    localStorage.setItem("storedProjects", JSON.stringify(projects));  
 }
 
-export function addCardToProjectStorage(project, card){
-    const cards = project.getAllCards();
+export function addCardToProjectStorage(){
+    let cards = [];
+    for (let project of allprojects.getAllProjects()){
+        console.log(project.getAllCards())
+        cards.push(project.getAllCards());
+        console.log(cards)
+    }
     console.log(cards)
     localStorage.setItem("storedCards", JSON.stringify(cards));
 }
@@ -16,21 +21,30 @@ export function addCardToProjectStorage(project, card){
 export function removeCardFromProjectStorage(card){
     console.log(card)
     const cards = JSON.parse(localStorage.getItem("storedCards") || "[]");
-    for (let i = 0; i < cards.length; i++){
-        if(cards[i].uniqueID === card.uniqueID){
-            cards.splice(i, 1);
-        }        
+    for (let proj = 0; proj < cards.length; proj++) {
+        for (let todo = 0; todo < cards[proj].length; todo++) {
+            if(cards[proj][todo].uniqueID === card.uniqueID){
+                cards[proj].splice(todo, 1);
+            }  
+        }  
     }
     localStorage.setItem("storedCards", JSON.stringify(cards));
 }
 
 export function getProjectFromStorage(){
-    const project = ProjectLogic.fromJSON(localStorage.getItem("storedProject"))
-    const keeper = JSON.parse(localStorage.getItem("storedCards") || "[]");
-    for (let card of keeper){
-        project.add(card);
-    }
-    console.log(project)
-    renderProject(project);
+    const projects = JSON.parse(localStorage.getItem("storedProjects" || "[]"));
+    const cards = JSON.parse(localStorage.getItem("storedCards") || "[]");
+    console.log(projects)
+    console.log(cards)
+    for (let project of projects){
+        let projectObj = ProjectLogic.fromJSON(project);
+        for (let proj of cards){
+            for (let card of proj){
+                if (projectObj.index === card.projectID)
+                projectObj.add(card);
+            }  
+        }
+        renderProject(projectObj);
+    }   
 }
 

@@ -12,10 +12,11 @@ export function formForm(titleinput, descriptioninput, dueDateinput, priorityinp
     form.addEventListener("submit", (e) => {
         form.remove();
         const uniqueID = 'id' + (new Date()).getTime();
-        const newToDo = new ToDoCard(titleinput.value, descriptioninput.value, dueDateinput.value, priorityinput.value, uniqueID);
+        const projectID = CurrentProject.index;
+        const newToDo = new ToDoCard(titleinput.value, descriptioninput.value, dueDateinput.value, priorityinput.value, uniqueID, projectID);
         console.log(CurrentProject);
         CurrentProject.add(newToDo);
-        addCardToProjectStorage(CurrentProject, newToDo);
+        addCardToProjectStorage();
         console.log(CurrentProject.getLength())
         projectNumberofCards(CurrentProject);//
         

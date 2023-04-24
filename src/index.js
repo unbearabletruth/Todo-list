@@ -19,7 +19,8 @@ function renderWelcomeCard(){
     const description = "This is a welcoming card! Just click the bin icon below to delete it!";
     const dueDate = "2018-06-07T00:00";
     const priority = "Low";
-    const newToDo = new ToDoCard(title, description, dueDate, priority, uniqueID);
+    const projectID = CurrentProject.index;
+    const newToDo = new ToDoCard(title, description, dueDate, priority, uniqueID, projectID);
     CurrentProject.add(newToDo);
     projectNumberofCards(CurrentProject);
     renderCard(newToDo);
