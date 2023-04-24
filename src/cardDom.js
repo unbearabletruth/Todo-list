@@ -5,6 +5,7 @@ import { projectNumberofCards } from "./projectDom";
 import { format, parseISO } from 'date-fns';
 import { formCancel, formDescription, formDueDate, formForm, formFormEdit, 
     formPriority, formSubmit, formTitle, deleteBin, editCardIcon, formSubmitEdit} from './cardFormElements'
+import { removeCardFromProjectStorage } from "./storage";
 
 
 const content = document.querySelector(".todos");
@@ -153,6 +154,7 @@ function editCard(card, index){
 
 function removeCard(card){
     CurrentProject.remove(card);
+    removeCardFromProjectStorage(card);
 }
 
 
