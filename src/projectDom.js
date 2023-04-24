@@ -51,6 +51,7 @@ function projectFormForm(nameinput){
         const newProjectL = new ProjectLogic(nameinput.value, projectIndex);
         renderProject(newProjectL);
         addProjectToStorage(newProjectL);//
+        
         formProject.remove();  
         e.preventDefault();   
     });

@@ -1,5 +1,5 @@
-import bin from "./bin.svg";
-import edit from "./edit.svg";
+import bin from "../public/images/bin.svg";
+import edit from "../public/images/edit.svg";
 import { CurrentProject } from ".";
 import { renderCard, editCard, removeCard } from "./cardDom";
 import { ToDoCard } from "./classes";
