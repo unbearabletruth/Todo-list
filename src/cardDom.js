@@ -1,5 +1,5 @@
 import { CurrentProject } from ".";
-import './renderCard.css';
+import '../public/styles/renderCard.css';
 import { ToDoCard } from "./classes";
 import { projectNumberofCards } from "./projectDom";
 import { format, parseISO } from 'date-fns';

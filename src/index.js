@@ -1,4 +1,4 @@
-import './style.css';
+import '../public/styles/style.css';
 import { ProjectLogic } from './classes';
 import { renderProjectName, renderProject, createNewProject } from './projectDom';
 import { renderWelcomeCard } from './cardDom';
