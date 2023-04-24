@@ -31,11 +31,21 @@ export function removeCardFromProjectStorage(card){
     localStorage.setItem("storedCards", JSON.stringify(cards));
 }
 
+export function removeProjectFromStorage(project){
+    console.log(project)
+    const projects = JSON.parse(localStorage.getItem("storedProjects" || "[]"));
+    for (let i = 0; i < projects.length; i++) {
+        console.log(projects[i].index)
+        if (projects[i].index === project.index){
+            projects.splice(i, 1);
+        }    
+    }
+    localStorage.setItem("storedProjects", JSON.stringify(projects));  
+}
+
 export function getProjectFromStorage(){
     const projects = JSON.parse(localStorage.getItem("storedProjects" || "[]"));
     const cards = JSON.parse(localStorage.getItem("storedCards") || "[]");
-    console.log(projects)
-    console.log(cards)
     for (let project of projects){
         let projectObj = ProjectLogic.fromJSON(project);
         for (let proj of cards){

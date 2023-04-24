@@ -1,8 +1,8 @@
 import { fillNewCard } from './cardDom';
 import { ProjectLogic, allprojects } from './classes';
 import { CurrentProject } from '.';
-import { addProjectToStorage } from './storage';
-
+import { addProjectToStorage, removeProjectFromStorage } from './storage';
+import bin from "../public/images/bin.svg";
 
 const sidebar = document.querySelector(".projects");
 
@@ -102,14 +102,26 @@ function renderProjectTaskCounter(project){
     return counter;
 }
 
+function deleteBinProject(project, renderedProject){
+    const deleteIcon = document.createElement("img");
+    deleteIcon.classList.add("cardimg");
+    deleteIcon.src = bin;
+    deleteIcon.addEventListener("click", () => {
+        removeProject(project);
+        renderedProject.remove();
+    })
+    return deleteIcon;
+}
+
 function renderProject(project){
-    console.log(typeof project)
     const newproject = document.createElement("div");
     newproject.classList.add("project");
     newproject.textContent = project.name;
     const counter = renderProjectTaskCounter(project);
     newproject.appendChild(counter);
     sidebar.appendChild(newproject);
+    const deleteBin = deleteBinProject(project, newproject);
+    newproject.appendChild(deleteBin);
     allprojects.add(project);
     newproject.addEventListener("click", () => {
         const todos = document.querySelector(".todos");
@@ -118,10 +130,14 @@ function renderProject(project){
         }
         renderProjectName(project);
         renderProjectColor(newproject);
-        console.log(project)
         project.renderAllCards();
         CurrentProject = project;
     });
+}
+
+function removeProject(project){
+    allprojects.remove(project);
+    removeProjectFromStorage(project);
 }
 
 fillNewCard();

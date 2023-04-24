@@ -114,7 +114,6 @@ export function deleteBin(card, toDo){
     deleteIcon.addEventListener("click", () => {
         removeCard(card);
         projectNumberofCards(CurrentProject);
-        //CurrentProject.remove(card); mb do it directly
         toDo.remove();
     })
     return deleteIcon;

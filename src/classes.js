@@ -29,9 +29,7 @@ class ProjectLogic {
     }
 
     remove(card){
-        console.log(card)
         this.toDoList = this.toDoList.filter(item => item.uniqueID !== card.uniqueID);
-        console.log(this.toDoList);
     }
 
     edit(card, titleinput, descriptioninput, dueDateinput, priorityinput){
@@ -81,6 +79,10 @@ class ListofProjects {
 
     add(project){
         this.projects.push(project);
+    }
+
+    remove(project){
+        this.projects = this.projects.filter(item => item.index !== project.index);
     }
 
     showAllProjects(){
