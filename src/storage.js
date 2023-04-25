@@ -4,6 +4,7 @@ import { renderProject } from "./projectDom";
 
 export function addProjectToStorage(project){
     const projects = allprojects.getAllProjects();
+    projects.shift();//remove default from rerendering
     localStorage.setItem("storedProjects", JSON.stringify(projects));  
 }
 

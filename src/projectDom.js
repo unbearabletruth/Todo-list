@@ -16,15 +16,6 @@ function projectFormName(){
     return nameinput;
 }
 
-function projectNumberofCards(project){
-    const counter = document.getElementById(`${project.index}`);
-    if (project.getLength() === 1){
-        counter.textContent = `${project.getLength()} task`;
-    }else{
-        counter.textContent = `${project.getLength()} tasks`;
-    } 
-}
-
 function projectFormSubmit(){
     const submit = document.createElement("button");
     submit.classList.add("projectFormButtons");
@@ -94,11 +85,19 @@ function renderProjectColor(projectDom){
     projectDom.style.backgroundColor = "#38bdf8";//hover overrides selected
 }  
 
+function projectNumberofCards(project){
+    const counter = document.getElementById(`${project.index}`);
+    if (project.getLength() === 1){
+        counter.textContent = `${project.getLength()} task`;
+    }else{
+        counter.textContent = `${project.getLength()} tasks`;
+    } 
+}
+
 function renderProjectTaskCounter(project){
     const counter = document.createElement("div");
     counter.id = project.index;
     counter.classList.add("projectCounter");
-    counter.textContent = `${project.getLength()} tasks`;
     return counter;
 }
 
@@ -121,6 +120,7 @@ function renderProject(project){
     newproject.appendChild(counter);
     sidebar.appendChild(newproject);
     const deleteBin = deleteBinProject(project, newproject);
+    projectNumberofCards(project);
     newproject.appendChild(deleteBin);
     allprojects.add(project);
     newproject.addEventListener("click", () => {
