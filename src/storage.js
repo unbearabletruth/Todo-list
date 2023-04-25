@@ -51,11 +51,13 @@ export function getProjectFromStorage(){
         let projectObj = ProjectLogic.fromJSON(project);
         for (let proj of cards){
             for (let card of proj){
-                if (projectObj.index === card.projectID)
-                projectObj.add(card);
+                if (projectObj.index === card.projectID){
+                    projectObj.add(card);
+                }
             }  
         }
         renderProject(projectObj);
     }   
 }
 
+//if i add another project after adding projects with cards their cards multiply
