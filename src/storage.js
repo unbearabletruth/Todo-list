@@ -2,7 +2,8 @@ import { ProjectLogic, ToDoCard, allprojects } from "./classes";
 import { renderProject } from "./projectDom";
 
 
-export function addProjectToStorage(project){
+export function addProjectToStorage(){
+    console.log(allprojects)
     const projects = allprojects.getAllProjects();
     projects.shift();//remove default from rerendering
     localStorage.setItem("storedProjects", JSON.stringify(projects));  
@@ -11,11 +12,8 @@ export function addProjectToStorage(project){
 export function addCardToProjectStorage(){
     let cards = [];
     for (let project of allprojects.getAllProjects()){
-        console.log(project.getAllCards())
         cards.push(project.getAllCards());
-        console.log(cards)
     }
-    console.log(cards)
     localStorage.setItem("storedCards", JSON.stringify(cards));
 }
 
@@ -33,10 +31,8 @@ export function removeCardFromProjectStorage(card){
 }
 
 export function removeProjectFromStorage(project){
-    console.log(project)
     const projects = JSON.parse(localStorage.getItem("storedProjects" || "[]"));
     for (let i = 0; i < projects.length; i++) {
-        console.log(projects[i].index)
         if (projects[i].index === project.index){
             projects.splice(i, 1);
         }    
@@ -45,19 +41,26 @@ export function removeProjectFromStorage(project){
 }
 
 export function getProjectFromStorage(){
+    console.log(allprojects)
     const projects = JSON.parse(localStorage.getItem("storedProjects" || "[]"));
     const cards = JSON.parse(localStorage.getItem("storedCards") || "[]");
     for (let project of projects){
         let projectObj = ProjectLogic.fromJSON(project);
+        projectObj.showAllCards();
+        projectObj.empty();
+        console.log(projectObj.getAllCards());
         for (let proj of cards){
             for (let card of proj){
                 if (projectObj.index === card.projectID){
+                    console.log("hello")
                     projectObj.add(card);
                 }
             }  
         }
         renderProject(projectObj);
-    }   
+    }   console.log(allprojects)
 }
 
 //if i add another project after adding projects with cards their cards multiply
+//fixed with emptying project array before adding cards from storage
+//allprojects not empty after updating the page

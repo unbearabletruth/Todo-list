@@ -32,6 +32,10 @@ class ProjectLogic {
         this.toDoList = this.toDoList.filter(item => item.uniqueID !== card.uniqueID);
     }
 
+    empty(){
+        this.toDoList = [];
+    }
+
     edit(card, titleinput, descriptioninput, dueDateinput, priorityinput){
         console.log(titleinput)
         for (let task of this.toDoList){

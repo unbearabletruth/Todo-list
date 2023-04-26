@@ -41,7 +41,7 @@ function projectFormForm(nameinput){
         const projectIndex = 'id' + (new Date()).getTime();
         const newProjectL = new ProjectLogic(nameinput.value, projectIndex);
         renderProject(newProjectL);
-        addProjectToStorage(newProjectL);//
+        addProjectToStorage();//
         
         formProject.remove();  
         e.preventDefault();   
@@ -132,6 +132,7 @@ function renderProject(project){
         renderProjectColor(newproject);
         project.renderAllCards();
         CurrentProject = project;
+        console.log("clicked", project)
     });
 }
 
