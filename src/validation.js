@@ -1,10 +1,15 @@
-export function titleError(title, form){
-    createErrorMessage(form);
-    liveValidation(title, form);
+export function titleValidation(title, form){
+    createTitleErrorMessage(form);
+    titleLiveValidation(title);
 }
 
-export function checkTitle(title, form){
-    const titleError = document.querySelector(".errorMessage");
+export function descriptionValidation(description, form){
+    createDescriptionErrorMessage(form);
+    descriptionLiveValidation(description);
+}
+
+export function checkTitle(title){
+    const titleError = document.querySelector("#titleErrorMessage");
     if (title.value.length < 3) {
         title.setCustomValidity(" ");
         title.reportValidity();
@@ -14,7 +19,7 @@ export function checkTitle(title, form){
         console.log("hey")
         title.setCustomValidity(" ");
         title.reportValidity();
-        titleError.textContent = "Title is 20 characters max!"
+        titleError.textContent = "Title shouldn't exceed 20 characters!"
         return false;
     } else {
         title.setCustomValidity("");
@@ -24,14 +29,44 @@ export function checkTitle(title, form){
     }
 }
 
-function createErrorMessage(form){
+function createTitleErrorMessage(form){
     const titleError = document.createElement("span");
     titleError.classList.add("errorMessage");
+    titleError.id = "titleErrorMessage";
     form.appendChild(titleError);
 }
 
-function liveValidation(title, form){
+function titleLiveValidation(title){
     title.addEventListener("input", () => {
-        checkTitle(title, form);
+        checkTitle(title);
+    })
+}
+
+
+export function checkDescription(description){
+    const descriptionError = document.querySelector("#descriptionErrorMessage");
+    if (description.value.length > 80) {
+        description.setCustomValidity(" ");
+        description.reportValidity();
+        descriptionError.textContent = "Description shouldn't exceed 100 characters!"
+        return false;
+    } else {
+        description.setCustomValidity("");
+        description.reportValidity();
+        descriptionError.textContent = "";
+        return true;
+    }
+}
+
+function createDescriptionErrorMessage(form){
+    const descriptionError = document.createElement("span");
+    descriptionError.classList.add("errorMessage");
+    descriptionError.id = "descriptionErrorMessage";
+    form.appendChild(descriptionError);
+}
+
+function descriptionLiveValidation(description){
+    description.addEventListener("input", () => {
+        checkDescription(description);
     })
 }

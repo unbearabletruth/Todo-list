@@ -145,7 +145,7 @@ button.projectFormButtons:hover {
     display: flex;
     flex-direction: column;
     background-color: #ddd6fe;
-    height: 300px;
+    height: 325px;
     width: 250px;
     padding: 25px;
     border-radius: 10px;
@@ -154,6 +154,7 @@ button.projectFormButtons:hover {
     color: #404040;
     transition: 0.2s;
     transition-timing-function: ease-in;
+    gap: 5px;
 }
 
 .bigToDoCard {
@@ -177,7 +178,7 @@ form#cardForm {
     display: flex;
     flex-direction: column;
     background-color: #ddd6fe;
-    height: 300px;
+    height: 325px;
     width: 250px;
     padding: 15px;
     border-radius: 10px;
@@ -246,7 +247,7 @@ textarea:focus {
 
 div.project {
     background-color: #fafafa;
-    padding: 15px 0px;
+    padding: 15px;
     gap: 15px;
     display: flex;
     justify-content: center;

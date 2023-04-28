@@ -4,7 +4,7 @@ import { format, parseISO } from 'date-fns';
 import { formCancel, formDescription, formDueDate, formForm, formFormEdit, 
     formPriority, formSubmit, formTitle, deleteBin, editCardIcon, formSubmitEdit} from './cardFormElements'
 import { removeCardFromProjectStorage } from "./storage";
-import { titleError } from "./validation";
+import { descriptionValidation, titleValidation } from "./validation";
 
 
 const content = document.querySelector(".todos");
@@ -22,8 +22,9 @@ function fillNewCard(){
         const submit = formSubmit();
         const cancel = formCancel(form);
         form.appendChild(titleinput);
-        titleError(titleinput, form);
-        form.appendChild(descriptioninput);    
+        titleValidation(titleinput, form);
+        form.appendChild(descriptioninput); 
+        descriptionValidation(descriptioninput, form);   
         form.appendChild(dueDateinput);
         form.appendChild(priorityinput);
         buttons.appendChild(submit);
@@ -143,7 +144,9 @@ function editCard(card, index){
     buttons.classList.add("cardformbutton");
     const submit = formSubmitEdit();
     form.appendChild(titleinput);
-    form.appendChild(descriptioninput);    
+    titleValidation(titleinput, form);
+    form.appendChild(descriptioninput);
+    descriptionValidation(descriptioninput, form);     
     form.appendChild(dueDateinput);
     form.appendChild(priorityinput);
     buttons.appendChild(submit);

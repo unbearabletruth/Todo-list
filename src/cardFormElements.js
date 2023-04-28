@@ -5,13 +5,13 @@ import { renderCard, editCard, removeCard } from "./cardDom";
 import { ToDoCard } from "./classes";
 import { projectNumberofCards } from "./projectDom";
 import { addCardToProjectStorage } from "./storage";
-import { checkTitle } from "./validation";
+import { checkDescription, checkTitle } from "./validation";
 
 export function formForm(titleinput, descriptioninput, dueDateinput, priorityinput){
     const form = document.createElement("form");
     form.id = "cardForm"; 
     form.addEventListener("submit", (e) => {
-        if (checkTitle(titleinput, form) === true){
+        if (checkTitle(titleinput, form) === true && checkDescription(descriptioninput, form) === true){
             form.remove();
             const uniqueID = 'id' + (new Date()).getTime();
             const projectID = CurrentProject.index;

@@ -48,7 +48,7 @@
 
 .toDocard .renderedCardText {
     overflow-wrap: break-word;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 
@@ -67,5 +67,5 @@
 
 .bigToDoCard .renderedCardText {
     overflow-wrap: break-word;
-    font-size: 26px;
+    font-size: 24px;
 }
