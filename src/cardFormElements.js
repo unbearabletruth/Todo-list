@@ -5,24 +5,28 @@ import { renderCard, editCard, removeCard } from "./cardDom";
 import { ToDoCard } from "./classes";
 import { projectNumberofCards } from "./projectDom";
 import { addCardToProjectStorage } from "./storage";
+import { callInitial, checkTitle } from "./validation";
 
 export function formForm(titleinput, descriptioninput, dueDateinput, priorityinput){
     const form = document.createElement("form");
-    form.id = "cardForm";
+    form.id = "cardForm"; 
+    callInitial(titleinput, form);
     form.addEventListener("submit", (e) => {
-        form.remove();
-        const uniqueID = 'id' + (new Date()).getTime();
-        const projectID = CurrentProject.index;
-        const newToDo = new ToDoCard(titleinput.value, descriptioninput.value, dueDateinput.value, priorityinput.value, uniqueID, projectID);
-        console.log(CurrentProject);
-        CurrentProject.add(newToDo);
-        addCardToProjectStorage();
-        console.log(CurrentProject.getLength())
-        projectNumberofCards(CurrentProject);//
-        
-        CurrentProject.showAllCards();
-        renderCard(newToDo);
-        e.preventDefault();   
+        if (checkTitle(titleinput, form) === true){
+            form.remove();
+            const uniqueID = 'id' + (new Date()).getTime();
+            const projectID = CurrentProject.index;
+            const newToDo = new ToDoCard(titleinput.value, descriptioninput.value, dueDateinput.value, priorityinput.value, uniqueID, projectID);
+            console.log(CurrentProject);
+            CurrentProject.add(newToDo);
+            addCardToProjectStorage();
+            projectNumberofCards(CurrentProject);
+            CurrentProject.showAllCards();
+            renderCard(newToDo);
+            e.preventDefault();  
+        } else {
+            e.preventDefault();
+        }   
     });
     return form;
 }
@@ -43,10 +47,10 @@ export function formFormEdit(card, titleinput, descriptioninput, dueDateinput, p
 
 export function formTitle(){
     const titleinput = document.createElement("input");
+    titleinput.id = "titleInput";
     titleinput.type = "text";
     titleinput.placeholder = "Title";
-    titleinput.required = true;
-    titleinput.maxLength = 20;
+    titleinput.autocomplete = "off";
     return titleinput;
 }
 
@@ -54,7 +58,6 @@ export function formDescription(){
     const descriptioninput = document.createElement("textarea");
     descriptioninput.placeholder = "Description";
     descriptioninput.id = "descriptioninput";
-    descriptioninput.maxLength = 100;
     return descriptioninput;
 }
 

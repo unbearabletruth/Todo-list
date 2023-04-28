@@ -311,5 +311,10 @@ div#cardIcons {
 
 input:invalid,
 textarea:invalid {
-    border: 2px solid #f87171;
+    border: 2px solid #ef4444;
+}
+
+span.errorMessage {
+    font-size: 12px;
+    color: #ef4444;
 }
