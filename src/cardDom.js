@@ -1,11 +1,10 @@
 import { CurrentProject } from ".";
 import '../public/styles/renderCard.css';
-import { ToDoCard } from "./classes";
-import { projectNumberofCards } from "./projectDom";
 import { format, parseISO } from 'date-fns';
 import { formCancel, formDescription, formDueDate, formForm, formFormEdit, 
     formPriority, formSubmit, formTitle, deleteBin, editCardIcon, formSubmitEdit} from './cardFormElements'
 import { removeCardFromProjectStorage } from "./storage";
+import { titleError } from "./validation";
 
 
 const content = document.querySelector(".todos");
@@ -23,6 +22,7 @@ function fillNewCard(){
         const submit = formSubmit();
         const cancel = formCancel(form);
         form.appendChild(titleinput);
+        titleError(titleinput, form);
         form.appendChild(descriptioninput);    
         form.appendChild(dueDateinput);
         form.appendChild(priorityinput);
@@ -131,7 +131,6 @@ function toggleCard(card){
 
 function editCard(card, index){
     const titleinput = formTitle();
-    console.log(index)
     titleinput.value = card.title;
     const descriptioninput = formDescription();
     descriptioninput.value = card.description;

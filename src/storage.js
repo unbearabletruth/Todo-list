@@ -1,4 +1,4 @@
-import { ProjectLogic, ToDoCard, allprojects } from "./classes";
+import { ProjectLogic, allprojects } from "./classes";
 import { renderProject } from "./projectDom";
 
 

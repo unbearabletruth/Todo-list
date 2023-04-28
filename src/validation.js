@@ -1,4 +1,4 @@
-export function callInitial(title, form){
+export function titleError(title, form){
     createErrorMessage(form);
     liveValidation(title, form);
 }
@@ -27,8 +27,7 @@ export function checkTitle(title, form){
 function createErrorMessage(form){
     const titleError = document.createElement("span");
     titleError.classList.add("errorMessage");
-    console.log(form)
-    form.insertBefore(titleError, form.children[1]);
+    form.appendChild(titleError);
 }
 
 function liveValidation(title, form){
